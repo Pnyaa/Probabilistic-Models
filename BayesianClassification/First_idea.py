@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import logging
-import matplotlib.pyplot as plt
 import multiprocessing
+import time
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import norm
-import time
 
 
 def configure_logging():
@@ -43,7 +43,7 @@ def plot_XYS(X, cl1, cl2, m1, sig1, m2, sig2):
     plt.plot(Y, label="Signal bruité", color="limegreen")
     plt.xlabel("# point d'observation")
     plt.ylabel("Valeur signal")
-    #plt.title(f"Reconstruction du signal pour m1={m1}, m2={m2}, sig1={sig1} et sig2={sig2}")
+    # plt.title(f"Reconstruction du signal pour m1={m1}, m2={m2}, sig1={sig1} et sig2={sig2}")
     plt.legend(loc="upper right")
     plt.draw()
     plt.pause(1)
@@ -58,7 +58,7 @@ def mean_rate(X, cl1, cl2, m1, sig1, m2, sig2, iterations):
     plt.figure(2, figsize=(8, 6), dpi=80)
     plt.plot(x, mean_rates)
     plt.plot(x, ultimate_mean * np.ones(iterations), color="red", label=f"Erreur moyenne : {ultimate_mean:.3e}")
-    #plt.title(f"Evolution du taux d'erreur moyen pour m1={m1}, m2={m2}, sig1={sig1} et sig2={sig2}")
+    # plt.title(f"Evolution du taux d'erreur moyen pour m1={m1}, m2={m2}, sig1={sig1} et sig2={sig2}")
     plt.xlabel("Nombre de signaux sur lesquels l'erreur est moyennée")
     plt.ylabel("Taux d'erreur moyen")
     plt.legend(loc="upper right")

@@ -2,11 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import logging
-import matplotlib.pyplot as plt
 import multiprocessing
+import time
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import norm
-import time
 
 
 def configure_logging():
@@ -98,7 +98,7 @@ def mean_rate(X, cl1, cl2, p1, p2, m1, sig1, m2, sig2, iterations, function):
 
 def simul2(N, cl1, cl2, p1, p2):
     if p1 + p2 != 1:
-         raise ValueError("Probabilities do not sum to 1")
+        raise ValueError("Probabilities do not sum to 1")
     nb_cl1 = round(p1 * N)
     signal = np.concatenate((cl1 * np.ones(nb_cl1, dtype=int), cl2 * np.ones(N - nb_cl1, dtype=int)))
     np.random.shuffle(signal)
@@ -137,7 +137,7 @@ def main():
     # Question 3&4
     cl1, cl2 = 100, 200
     probas = [0.1, 0.3, 0.5, 0.7, 0.9]
-    signaux = [simul2(500, cl1, cl2, i, 1-i) for i in probas]
+    signaux = [simul2(500, cl1, cl2, i, 1 - i) for i in probas]
     for i in range(len(signaux)):
         X = signaux[i].reshape((signaux[i].shape[0], 1))
         p1 = probas[i]
